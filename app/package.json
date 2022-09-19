@@ -1,7 +1,7 @@
 {
   "name": "assez-dechets-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Student apothéose project to create an simple app for manage waste collection team",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
