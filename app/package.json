@@ -1,0 +1,26 @@
+{
+  "name": "assez-dechets-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/O-clock-Phenix/projet-06-ramassage-de-dechets-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/O-clock-Phenix/projet-06-ramassage-de-dechets-back/issues"
+  },
+  "homepage": "https://github.com/O-clock-Phenix/projet-06-ramassage-de-dechets-back#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
