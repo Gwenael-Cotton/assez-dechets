@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:13-alpine
+    restart: "no"
+    ports:
+      - "5432:5432"
+    volumes:
+      - assez-dechets-postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: assez-dechets-project
+      POSTGRES_USER: assez-dechets
+      POSTGRES_PASSWORD: superSecretPassword
+volumes:
+  assez-dechets-postgres:
