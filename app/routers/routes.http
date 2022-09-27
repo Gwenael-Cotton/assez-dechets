@@ -1,0 +1,18 @@
+###
+GET http://localhost:3000/api/events
+
+###
+
+POST http://localhost:3000/api/events
+Content-Type: application/json
+
+{
+    "place": "Trifouilly-les-Oies",
+    "startDate": "2018-01-01",
+    "endDate": "2018-01-02",
+    "description": "C'est la fête des oies",
+    "status": "DONE",
+    "weight": 10,
+    "creatorId": 1
+
+}
