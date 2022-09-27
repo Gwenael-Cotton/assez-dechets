@@ -1,19 +1,18 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../database';
-
-class User extends Model {}
-
-User.init({
-  place: DataTypes.STRING,
-  startDate: DataTypes.DATE,
-  endDate: DataTypes.DATE,
-  description: DataTypes.STRING,
-  status: DataTypes.ENUM('UPCOMING', 'ONGOING', 'DONE'),
-  weight: DataTypes.INTEGER,
-  creatorId: DataTypes.INTEGER,
-}, {
-  sequelize,
-  tableName: 'event',
-  underscored: true,
-});
-export default User;
+module.exports = (sequelize, DataTypes) => {
+  const Event = sequelize.define('Event', {
+    place: DataTypes.STRING,
+    startDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    description: DataTypes.STRING,
+    status: DataTypes.ENUM,
+    weight: DataTypes.INTEGER,
+    creatorId: DataTypes.INTEGER,
+  }, {});
+  Event.associate = function (models) {
+    Event.belongsTo(models.User, {
+      foreignKey: 'creatorId',
+      onDelete: 'CASCADE',
+    });
+  };
+  return Event;
+};
