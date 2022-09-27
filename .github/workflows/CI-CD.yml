@@ -37,5 +37,5 @@ jobs:
 
     steps:
 
-      - name: "test ci"
+      - name: test ci
         run: cd app && npm test
