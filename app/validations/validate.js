@@ -10,4 +10,4 @@ const validate = (schema) => async (req, res, next) => {
     return res.status(500).json({ type: err.name, message: err.message });
   }
 };
-export default validate;
+module.exports = validate;

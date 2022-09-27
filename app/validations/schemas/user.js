@@ -1,8 +1,4 @@
-import {
-  number,
-  object,
-  string,
-} from 'yup';
+const { number, object, string } = require('yup');
 
 const userSchema = object({
   firstName: string().required(),
@@ -17,4 +13,4 @@ const userSchema = object({
 
 });
 
-export default userSchema;
+module.exports = userSchema;

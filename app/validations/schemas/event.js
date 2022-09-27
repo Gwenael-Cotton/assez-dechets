@@ -1,6 +1,6 @@
-import {
+const {
   object, string, number, date,
-} from 'yup';
+} = require('yup');
 
 const eventSchema = object({
   place: string().required(),
@@ -13,4 +13,4 @@ const eventSchema = object({
 
 });
 
-export default eventSchema;
+module.exports = eventSchema;

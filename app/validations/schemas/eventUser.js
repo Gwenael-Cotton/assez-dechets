@@ -1,10 +1,8 @@
-import {
-  object, number,
-} from 'yup';
+const { object, number } = require('yup');
 
 const eventSchema = object({
   userId: number().required(),
   eventId: number().required(),
 });
 
-export default eventSchema;
+module.exports = eventSchema;
