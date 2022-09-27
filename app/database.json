@@ -1,0 +1,23 @@
+{
+    "development": {
+      "username": "express_api_sequelize_dev",
+      "password": "XEvd3Jtr2g6Uid(X+=LycPA&",
+      "database": "express_api_sequelize_dev",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "express_api_sequelize_test",
+      "password": "=4?cwbp8HqmF(hFuJ2Wnxaa/",
+      "database": "express_api_sequelize_test",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "root",
+      "password": null,
+      "database": "database_production",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }

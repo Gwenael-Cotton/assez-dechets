@@ -1,11 +1,18 @@
-import express from "express";
+import express from 'express';
 
 const app = express();
+
 const port = process.env.PORT || 3000;
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// import router from './routers';
+
+app.use(express.json());
+
+// app.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
+
+// app.use('/api', router);
 
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);
