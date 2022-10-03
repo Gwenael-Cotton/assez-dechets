@@ -7,7 +7,7 @@ const eventController = {
       return res.json(events);
     } catch (err) {
       console.error(err);
-      return res.status(500).send({ message: 'Internal server error' });
+      return res.status(500).send({ error: err.message });
     }
   },
 
@@ -26,7 +26,7 @@ const eventController = {
       return res.status(201).send(eventToCreate);
     } catch (err) {
       console.error(err);
-      return res.status(500).send({ message: 'Internal server error' });
+      return res.status(500).send({ error: err.message });
     }
   },
 };
