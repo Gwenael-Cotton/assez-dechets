@@ -1,12 +1,24 @@
 const models = require('../models/database');
 
 const eventController = {
-  getAllEvents: async (req, res) => {
+  getAllEvents: async (_, res) => {
     try {
       const events = await models.Event.findAll();
       return res.json(events);
     } catch (err) {
-      console.error(err);
+      return res.status(500).send({ error: err.message });
+    }
+  },
+
+  getOneEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const event = await models.Event.findByPk(id);
+      if (!event) {
+        return res.status(404).send({ error: 'Event not found' });
+      }
+      return res.json(event);
+    } catch (err) {
       return res.status(500).send({ error: err.message });
     }
   },
@@ -23,9 +35,39 @@ const eventController = {
         creatorId: req.body.creatorId,
       });
 
-      return res.status(201).send(eventToCreate);
+      return res.status(201).json(eventToCreate);
     } catch (err) {
-      console.error(err);
+      return res.status(500).send({ error: err.message });
+    }
+  },
+
+  updateEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const [updated] = await models.Event.update(req.body, {
+        where: { id },
+      });
+      if (updated) {
+        const updatedEvent = await models.Event.findByPk(id);
+        return res.status(200).json(updatedEvent);
+      }
+      throw new Error('Event not found');
+    } catch (err) {
+      return res.status(500).send({ error: err.message });
+    }
+  },
+
+  deleteEvent: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const eventToDelete = await models.Event.findByPk(id);
+      if (!eventToDelete) {
+        return res.status(404).send({ error: 'Event not found' });
+      }
+
+      await eventToDelete.destroy();
+      return res.status(200).json({ message: 'Event deleted' });
+    } catch (err) {
       return res.status(500).send({ error: err.message });
     }
   },

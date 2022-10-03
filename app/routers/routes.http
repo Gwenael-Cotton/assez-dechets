@@ -2,6 +2,9 @@
 GET http://localhost:3000/api/events
 
 ###
+GET http://localhost:3000/api/events/2
+
+###
 
 POST http://localhost:3000/api/events
 Content-Type: application/json
@@ -11,11 +14,24 @@ Content-Type: application/json
     "startDate": "2018-01-01",
     "endDate": "2018-01-02",
     "description": "C'est la fête des oies",
-    "status": "DONE",
+    "status": "UPCOMING",
     "weight": 10,
     "creatorId": 1
 
 }
+
+###
+
+PUT http://localhost:3000/api/events/1
+Content-Type: application/json
+
+{
+    "place": "Turlututu"
+}
+
+###
+
+DELETE http://localhost:3000/api/events/8
 
 ###
 
