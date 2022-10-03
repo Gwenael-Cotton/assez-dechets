@@ -1,14 +1,10 @@
-// const sequelize = require('sequelize');
-// const DataTypes = require('sequelize/lib/data-types');
+const models = require('../models/database');
 
-const Event = require('../models/event');
-// const db = require('../database');
-
-module.exports = {
+const eventController = {
   getAllEvents: async (req, res) => {
     try {
-      const events = await Event.findAll();
-      return res.render('events', events);
+      const events = await models.Event.findAll();
+      return res.json(events);
     } catch (err) {
       console.error(err);
       return res.status(500).send({ message: 'Internal server error' });
@@ -17,7 +13,7 @@ module.exports = {
 
   createEvent: async (req, res) => {
     try {
-      const eventToCreate = await Event.create({
+      const eventToCreate = await models.Event.create({
         place: req.body.place,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
@@ -34,3 +30,5 @@ module.exports = {
     }
   },
 };
+
+module.exports = eventController;

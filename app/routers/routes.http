@@ -16,3 +16,16 @@ Content-Type: application/json
     "creatorId": 1
 
 }
+
+###
+
+POST http://localhost:3000/api/user
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "johndoe@johndoe.com",
+    "password": "John!Doe",
+    "numberParticipations": 1
+}
