@@ -20,7 +20,8 @@ module.exports = {
         type: Sequelize.STRING,
       },
       status: {
-        type: Sequelize.ENUM('ONGOING', 'UPCOMING', 'DONE'),
+        // type: Sequelize.ENUM('ONGOING', 'UPCOMING', 'DONE'),
+        type: Sequelize.STRING,
       },
       weight: {
         type: Sequelize.INTEGER,

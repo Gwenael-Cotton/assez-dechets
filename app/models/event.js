@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
     description: DataTypes.STRING,
-    status: DataTypes.ENUM,
+    status: DataTypes.STRING,
     weight: DataTypes.INTEGER,
     creatorId: DataTypes.INTEGER,
   }, {});
