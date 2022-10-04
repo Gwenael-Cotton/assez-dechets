@@ -1,4 +1,5 @@
 const bcrypt = require('bcrypt');
+const { omit } = require('ramda');
 
 const models = require('../models/database');
 
@@ -13,8 +14,11 @@ const userController = {
       );
       const data = await user.authorize(user.email, user.password);
       // const data = await user.authorize();
-
-      return res.json(data);
+      const result = omit(['password'], {
+        ...data.user.dataValues,
+        token: data.authToken.token,
+      });
+      return res.json(result);
     } catch (err) {
       console.log('UNE ERREUR AU REGISTER', err);
       return res.status(400).send(err);
@@ -24,24 +28,24 @@ const userController = {
   /* Login Route
     ========================================================= */
   login: async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    // if the username / password is missing, we use status code 400
+    // if the email / password is missing, we use status code 400
     // indicating a bad request was made and send back a message
-    if (!username || !password) {
+    if (!email || !password) {
       return res.status(400).send(
-        'Request missing username or password param',
+        'Request missing email or password param',
       );
     }
 
     try {
-      let user = await models.User.authenticate(username, password);
+      let user = await models.User.authenticate(email, password);
 
       user = await user.authorize();
 
       return res.json(user);
     } catch (err) {
-      return res.status(400).send('invalid username or password');
+      return res.status(400).send('invalid email or password');
     }
   },
 
