@@ -21,6 +21,6 @@ module.exports = {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('auth_tokens');
+    await queryInterface.dropTable('Authtokens');
   },
 };

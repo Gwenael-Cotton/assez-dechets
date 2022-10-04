@@ -44,6 +44,6 @@ module.exports = {
     });
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('events');
+    await queryInterface.dropTable('Events');
   },
 };
