@@ -45,3 +45,15 @@ Content-Type: application/json
     "password": "John!Doe",
     "numberParticipations": 1
 }
+
+###
+
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "firstName": "test",
+  "lastName": "test",
+  "email": "gfgqaavgfgfh@test.com",
+  "password": "turlututu"
+}
