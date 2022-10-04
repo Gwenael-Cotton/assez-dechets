@@ -1,11 +1,20 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
+const db = require('./models/database');
 const routes = require('./routers');
+const authToken = require('./middleware/auth');
 
 const app = express();
 
 app.use(express.json());
+
+app.use(cookieParser());
+app.use(authToken);
+
 app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`Server is live at localhost:${PORT}`));
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log(`Server is live at localhost:${PORT}`));
+});

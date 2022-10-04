@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     weight: DataTypes.INTEGER,
     creatorId: DataTypes.INTEGER,
   }, {});
-  Event.associate = function (models) {
+  Event.associate = (models) => {
     Event.belongsTo(models.User, {
       foreignKey: 'creatorId',
       onDelete: 'CASCADE',

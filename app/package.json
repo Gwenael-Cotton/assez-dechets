@@ -4,7 +4,7 @@
   "description": "Student apothéose project to create an simple app to manage waste collection events",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --bail[=1]",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/O-clock-Phenix/projet-06-ramassage-de-dechets-back#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
