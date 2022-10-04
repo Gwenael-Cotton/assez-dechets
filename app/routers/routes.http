@@ -10,10 +10,10 @@ POST http://localhost:3000/api/events
 Content-Type: application/json
 
 {
-    "place": "Trifouilly-les-Oies",
+    "place": "Trifouilly-les-Canards",
     "startDate": "2018-01-01",
     "endDate": "2018-01-02",
-    "description": "C'est la fête des oies",
+    "description": "C'est la fête des canards",
     "status": "UPCOMING",
     "weight": 10,
     "creatorId": 1
@@ -32,19 +32,6 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/api/events/8
-
-###
-
-POST http://localhost:3000/api/user
-Content-Type: application/json
-
-{
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "johndoe@johndoe.com",
-    "password": "John!Doe",
-    "numberParticipations": 1
-}
 
 ###
 
