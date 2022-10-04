@@ -13,7 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    numberParticipations: DataTypes.INTEGER,
+    numberParticipations: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   }, {
     // freezeTableName: true,
   });
