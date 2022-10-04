@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('events', {
+    await queryInterface.createTable('Events', {
       id: {
         allowNull: false,
         autoIncrement: true,

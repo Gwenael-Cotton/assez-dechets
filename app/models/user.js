@@ -22,15 +22,15 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = (models) => {
-    User.hasMany(models.AuthToken);
+    User.hasMany(models.AuthToken, {
+      foreignKey: 'userId',
+    });
   };
 
   User.authenticate = async (email, password) => {
     const user = await User.findOne({ where: { email } });
 
-    if (bcrypt.compareSync(password, user.password)) {
-      return user.authorize();
-    }
+    if (bcrypt.compareSync(password, user.password)) user.authorize();
 
     throw new Error('invalid password');
   };
@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     // sequelize which is made for any 'hasMany' relationships
     await user.addAuthToken(authToken);
 
+    // if(authToken)
     return { user, authToken };
   };
 

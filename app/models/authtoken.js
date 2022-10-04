@@ -14,13 +14,16 @@ module.exports = (sequelize, DataTypes) => {
   // set up the associations so we can make queries that include
   // the related objects
   AuthToken.associate = (models) => {
-    AuthToken.belongsTo(models.User);
+    AuthToken.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE',
+    });
   };
 
   // generates token and
   // associates it with a user
-  AuthToken.generate = async (id) => {
-    if (!id) {
+  AuthToken.generate = async (userId) => {
+    if (!userId) {
       throw new Error('AuthToken requires a user ID');
     }
 
@@ -29,9 +32,9 @@ module.exports = (sequelize, DataTypes) => {
     // eslint-disable-next-line max-len
     const createToken = (userid) => jwt.sign({ userid }, process.env.TOKEN_SECRET_KEY, { expiresIn: maxAge });
 
-    const token = createToken(id);
+    const token = createToken(userId);
 
-    return AuthToken.create({ token, id });
+    return AuthToken.create({ token, userId });
   };
 
   return AuthToken;
