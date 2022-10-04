@@ -18,7 +18,7 @@ docker compose up
 **For run in watch mode "nodemon"**
 
 ```zsh
-npm run develop
+npm run dev
 ```
 
 **Else**
