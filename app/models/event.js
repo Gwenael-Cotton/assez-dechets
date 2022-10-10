@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     startDate: DataTypes.DATE,
     endDate: DataTypes.DATE,
     description: DataTypes.STRING,
-    status: DataTypes.ENUM,
+    status: DataTypes.ENUM('ONGOING', 'UPCOMING', 'DONE'),
     weight: DataTypes.INTEGER,
     creatorId: DataTypes.INTEGER,
   }, {});
-  Event.associate = function (models) {
+  Event.associate = (models) => {
     Event.belongsTo(models.User, {
       foreignKey: 'creatorId',
       onDelete: 'CASCADE',

@@ -1,6 +1,6 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Events', {
+    await queryInterface.createTable('events', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -20,18 +20,19 @@ module.exports = {
         type: Sequelize.STRING,
       },
       status: {
-        type: Sequelize.ENUM('ONGOING', 'UPCOMING', 'DONE'),
+        type: Sequelize.ENUM,
+        values: ['ONGOING', 'UPCOMING', 'DONE'],
       },
       weight: {
         type: Sequelize.INTEGER,
       },
-      creatorId: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'Users',
-          key: 'id',
-        },
-      },
+      // creatorId: {
+      //   type: Sequelize.INTEGER,
+      //   references: {
+      //     model: 'Users',
+      //     key: 'id',
+      //   },
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -42,7 +43,7 @@ module.exports = {
       },
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Events');
+  async down(queryInterface) {
+    await queryInterface.dropTable('events');
   },
 };
