@@ -3,9 +3,14 @@ const cookieParser = require('cookie-parser');
 const db = require('./models/database');
 const routes = require('./routers');
 const authToken = require('./middleware/auth');
+const cors = require('cors');
+
 
 const app = express();
 
+app.use(cors({
+  origin: process.env.CORS_ORIGIN_URL,
+}));
 app.use(express.json());
 
 app.use(cookieParser());
