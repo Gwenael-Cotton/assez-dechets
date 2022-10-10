@@ -15,6 +15,8 @@ docker compose up
 
 - cd app
 
+by default your database are empty when you run your server 
+
 **For run in watch mode "nodemon"**
 
 ```zsh

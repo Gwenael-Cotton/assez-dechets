@@ -12,12 +12,14 @@ const userController = {
       const user = await models.User.create(
         Object.assign(req.body, { password: hash }),
       );
+
       const data = await user.authorize(user.email, user.password);
-      // const data = await user.authorize();
+
       const result = omit(['password'], {
         ...data.user.dataValues,
         token: data.authToken.token,
       });
+
       return res.json(result);
     } catch (err) {
       console.log('UNE ERREUR AU REGISTER', err);
@@ -39,9 +41,7 @@ const userController = {
     }
 
     try {
-      let user = await models.User.authenticate(email, password);
-
-      user = await user.authorize();
+      const user = await models.User.authenticate(email, password);
 
       return res.json(user);
     } catch (err) {
