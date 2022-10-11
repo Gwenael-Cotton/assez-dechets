@@ -3,6 +3,7 @@ const {
 } = require('yup');
 
 const eventSchema = object({
+  title: string().required(),
   place: string().required(),
   startDate: date().required(),
   endDate: date().required(),

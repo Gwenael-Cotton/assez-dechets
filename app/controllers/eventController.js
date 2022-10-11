@@ -40,6 +40,7 @@ const eventController = {
       }
 
       const eventToCreate = await models.Event.create({
+        title: req.body.title,
         place: req.body.place,
         startDate: req.body.startDate,
         endDate: req.body.endDate,

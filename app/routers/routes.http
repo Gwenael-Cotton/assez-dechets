@@ -10,6 +10,7 @@ POST http://localhost:3000/api/events
 Content-Type: application/json
 
 {
+    "title": "Super collecte",
     "place": "Trifouilly-les-Canards",
     "startDate": "2018-01-01",
     "endDate": "2018-01-02",
