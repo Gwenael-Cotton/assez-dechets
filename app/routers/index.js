@@ -15,10 +15,12 @@ router.get('/events', eventController.getAllEvents);
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 
-router.get('/events', verifyAccessToken, eventController.getAllEvents);
+router.get('/events', eventController.getAllEvents);
 router.get('/events/:id', eventController.getOneEvent);
 router.post('/events', verifyAccessToken, eventController.createEvent);
 router.put('/events/:id', eventController.updateEvent);
 router.delete('/events/:id', eventController.deleteEvent);
+
+// endpoint /refresh-tokens
 
 module.exports = router;
