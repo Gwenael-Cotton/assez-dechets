@@ -25,6 +25,20 @@ const eventController = {
 
   createEvent: async (req, res) => {
     try {
+      const today = new Date();
+
+      const startDateMustBeAfterToday = new Date(req.body.startDate) > today;
+
+      const endDateMustBeAfterStartDate = new Date(req.body.endDate) > new Date(req.body.startDate);
+
+      if (!startDateMustBeAfterToday) {
+        return res.status(400).send({ error: 'You must create an event in the future' });
+      }
+
+      if (!endDateMustBeAfterStartDate) {
+        return res.status(400).send({ error: 'End date must be after start date' });
+      }
+
       const eventToCreate = await models.Event.create({
         place: req.body.place,
         startDate: req.body.startDate,
