@@ -2,11 +2,22 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { omit } = require('ramda');
+const {
+  USER_NOT_FOUND,
+  INVALID_EMAIL_OR_PASSWORD,
+  NOT_AUTHENTICATED,
+  REFRESH_TOKEN_MISSING,
+  MISSING_EMAIL_PASSWORD,
+  AUTH_TOKEN_MISSING,
+} = require('../constants');
+const {
+  signAccessToken, signRefreshToken, verifyRefreshToken,
+} = require('../helpers/jwtHelpers');
 
 const models = require('../models/database');
 const { generateUserToken } = require('../service/auth/generateJwt');
 
-const userController = {
+const authController = {
   /* Register Route
     ========================================================= */
   register: async (req, res) => {
@@ -32,9 +43,7 @@ const userController = {
     // if the email / password is missing, we use status code 400
     // indicating a bad request was made and send back a message
     if (!email || !password) {
-      return res.status(400).send(
-        'Request missing email or password param',
-      );
+      return res.status(400).send(MISSING_EMAIL_PASSWORD);
     }
 
     try {
@@ -88,4 +97,4 @@ const userController = {
 
 };
 
-module.exports = userController;
+module.exports = authController;
