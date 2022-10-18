@@ -43,8 +43,8 @@ Content-Type: application/json
 {
   "firstName": "test",
   "lastName": "test",
-  "email": "fxxdfgff@test.com",
-  "password": "turlututu"
+  "email": "fddgfg@test.com",
+  "password": "P@ff!ssw0rd"
 }
 
 ###
@@ -53,5 +53,5 @@ Content-Type: application/json
 
 {
   "email": "fxxdfgff@test.com",
-  "password": "turlututu"
+  "password": "P@ssw0rd!"
 }

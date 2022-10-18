@@ -1,8 +1,9 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const routes = require('./routers');
+const eventRouter = require('./routers/event');
 const authRouter = require('./routers/auth');
+const errorRouter = require('./routers/error');
 
 const app = express();
 
@@ -12,10 +13,10 @@ app.use(cors({
 app.use(express.json());
 
 app.use(cookieParser());
-// app.use(authToken);
 
-app.use('/api', routes);
+app.use('/api', eventRouter);
 app.use('/api', authRouter);
+app.use('*', errorRouter);
 
 const PORT = process.env.PORT || 3000;
 
