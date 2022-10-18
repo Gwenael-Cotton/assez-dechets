@@ -1,7 +1,7 @@
 const yup = require('yup');
 const { PASSWORD_REQUIREMENTS, REQUIRED_PASSWORD } = require('../../../constants');
 
-const userSchema = yup.object({
+const userRegisterSchema = yup.object({
   body: yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
@@ -11,11 +11,10 @@ const userSchema = yup.object({
         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
         PASSWORD_REQUIREMENTS,
       ),
-    numberParticipations: yup.number().required(),
   }),
   // params: yup.object({
   //   id: yup.number().required(),
   // }),
 });
 
-module.exports = userSchema;
+module.exports = userRegisterSchema;

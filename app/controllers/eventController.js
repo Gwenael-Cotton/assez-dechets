@@ -1,3 +1,10 @@
+const {
+  EVENT_NOT_FOUND,
+  START_DATE_MUST_BE_AFTER_TODAY,
+  END_DATE_MUST_BE_AFTER_START_DATE,
+  EVENT_DELETED,
+} = require('../constants');
+
 const models = require('../models/database');
 
 const eventController = {
@@ -15,7 +22,7 @@ const eventController = {
       const { id } = req.params;
       const event = await models.Event.findByPk(id);
       if (!event) {
-        return res.status(404).send({ error: 'Event not found' });
+        return res.status(404).send({ error: EVENT_NOT_FOUND });
       }
       return res.json(event);
     } catch (err) {
@@ -32,11 +39,11 @@ const eventController = {
       const endDateMustBeAfterStartDate = new Date(req.body.endDate) > new Date(req.body.startDate);
 
       if (!startDateMustBeAfterToday) {
-        return res.status(400).send({ error: 'You must create an event in the future' });
+        return res.status(400).send({ error: START_DATE_MUST_BE_AFTER_TODAY });
       }
 
       if (!endDateMustBeAfterStartDate) {
-        return res.status(400).send({ error: 'End date must be after start date' });
+        return res.status(400).send({ error: END_DATE_MUST_BE_AFTER_START_DATE });
       }
 
       const eventToCreate = await models.Event.create({
@@ -66,7 +73,7 @@ const eventController = {
         const updatedEvent = await models.Event.findByPk(id);
         return res.status(200).json(updatedEvent);
       }
-      throw new Error('Event not found');
+      throw new Error(EVENT_NOT_FOUND);
     } catch (err) {
       return res.status(500).send({ error: err.message });
     }
@@ -77,11 +84,11 @@ const eventController = {
       const { id } = req.params;
       const eventToDelete = await models.Event.findByPk(id);
       if (!eventToDelete) {
-        return res.status(404).send({ error: 'Event not found' });
+        return res.status(404).send({ error: EVENT_NOT_FOUND });
       }
 
       await eventToDelete.destroy();
-      return res.status(200).json({ message: 'Event deleted' });
+      return res.status(200).json({ message: EVENT_DELETED });
     } catch (err) {
       return res.status(500).send({ error: err.message });
     }

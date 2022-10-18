@@ -2,11 +2,17 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { omit } = require('ramda');
+const {
+  INVALID_EMAIL_OR_PASSWORD,
+  MISSING_EMAIL_PASSWORD,
+  GENERIC_ERROR,
+  WRONG_TOKEN,
+} = require('../constants');
 
 const models = require('../models/database');
 const { generateUserToken } = require('../service/auth/generateJwt');
 
-const userController = {
+const authController = {
   /* Register Route
     ========================================================= */
   register: async (req, res) => {
@@ -32,9 +38,7 @@ const userController = {
     // if the email / password is missing, we use status code 400
     // indicating a bad request was made and send back a message
     if (!email || !password) {
-      return res.status(400).send(
-        'Request missing email or password param',
-      );
+      return res.status(400).send(MISSING_EMAIL_PASSWORD);
     }
 
     try {
@@ -47,7 +51,7 @@ const userController = {
 
       if (!user) {
         res.status(401).json({
-          error: 'Bad credential',
+          error: INVALID_EMAIL_OR_PASSWORD,
         });
       }
 
@@ -55,7 +59,7 @@ const userController = {
       const isValidPassword = await bcrypt.compare(password, user.password);
       if (!isValidPassword) {
         res.status(401).json({
-          error: 'Bad credential',
+          error: INVALID_EMAIL_OR_PASSWORD,
         });
       }
 
@@ -65,7 +69,7 @@ const userController = {
       res.json({ user, access_token });
     } catch (e) {
       res.status(500).json({
-        message: 'Oups...',
+        message: GENERIC_ERROR,
       });
     }
   },
@@ -81,11 +85,11 @@ const userController = {
       res.json(tokens);
     } catch (e) {
       res.status(401).json({
-        error: 'Bad token',
+        error: WRONG_TOKEN,
       });
     }
   },
 
 };
 
-module.exports = userController;
+module.exports = authController;

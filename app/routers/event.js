@@ -1,16 +1,13 @@
 const express = require('express');
-
-// const authController = require('../controllers/authController');
-
 const eventController = require('../controllers/eventController');
+const eventSchema = require('../service/validations/schemas/eventSchema');
+const validate = require('../service/validations/validate');
 
-const router = express.Router();
-
-router.get('/', (req, res) => res.send('Welcome'));
+const router = new express.Router();
 
 router.get('/events', eventController.getAllEvents);
 router.get('/events/:id', eventController.getOneEvent);
-router.post('/events', eventController.createEvent);
+router.post('/events', validate(eventSchema), eventController.createEvent);
 router.put('/events/:id', eventController.updateEvent);
 router.delete('/events/:id', eventController.deleteEvent);
 
