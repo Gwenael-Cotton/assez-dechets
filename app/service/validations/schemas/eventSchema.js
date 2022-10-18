@@ -9,8 +9,8 @@ const eventSchema = object({
   endDate: date().required(),
   description: string().required(),
   status: string().required(),
-  weight: number().required(),
-  creatorId: number().required(),
+  weight: number().required().positive().integer(),
+  creatorId: number().required().positive().integer(),
 
 });
 
