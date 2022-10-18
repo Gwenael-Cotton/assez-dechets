@@ -1,6 +1,6 @@
 const request = require('supertest');
 const app = require('../../index');
-const agent = require('supertest').agent(app);
+// const agent = require('supertest').agent(app);
 // const { sequelize, User } = require('../../models/user');
 const { sequelize } = require('../../models/database');
 // const { register } = require('../authController');
