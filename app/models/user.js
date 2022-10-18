@@ -1,7 +1,4 @@
-const bcrypt = require('bcrypt');
-
 module.exports = (sequelize, DataTypes) => {
-  const { AuthToken } = sequelize.models;
   const User = sequelize.define('User', {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
@@ -21,39 +18,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   User.associate = (models) => {
-    User.hasMany(models.AuthToken, {
+    User.hasMany(models.Event, {
       foreignKey: 'userId',
     });
-  };
-
-  User.authenticate = async (email, password) => {
-    const user = await User.findOne({ where: { email } });
-    const ifToken = await AuthToken.findOne({ where: { userId: user.id } });
-
-    if (bcrypt.compareSync(password, user.password)) {
-      return user.authorize(ifToken);
-    }
-    throw new Error('invalid password');
-  };
-
-  User.prototype.authorize = async function (ifToken) {
-    const user = this;
-
-    if (ifToken.userId === this.id) {
-      return { user, ifToken };
-    }
-    const authToken = await AuthToken.generate(this.id);
-
-    // addAuthToken is a generated method provided by
-    // sequelize which is made for any 'hasMany' relationships
-    await user.addAuthToken(authToken);
-
-    return { user, authToken };
-  };
-
-  User.prototype.logout = async (token) => {
-    // destroy the auth token
-    sequelize.models.AuthToken.destroy({ where: { token } });
   };
 
   return User;
