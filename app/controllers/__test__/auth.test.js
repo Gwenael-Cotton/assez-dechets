@@ -18,7 +18,7 @@ describe('Should be register', () => {
     firstName: expect.any(String),
     lastName: expect.any(String),
     email: expect.any(String),
-    password: expect.any(String),
+    // password: expect.any(String),
     numberParticipations: expect.any(Number),
     id: expect.any(Number),
     createdAt: expect.any(String),
@@ -37,7 +37,7 @@ describe('Should be register', () => {
     const res = await request(app).post('/api/register').send(user);
 
     expect(res.statusCode).toBe(201);
-    // expect(res.body).toEqual(mockUser);
+    expect(res.body).toEqual(mockUser);
     // expect(res.body).toMatchObject(user);
   });
 
@@ -45,7 +45,7 @@ describe('Should be register', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test3@gmail.com',
+      email: 'testfgfh3@gmail.com',
       // password: 'Superpass41*',
       // numberParticipations: 0,
     };
