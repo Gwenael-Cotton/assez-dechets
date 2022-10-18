@@ -29,6 +29,16 @@ module.exports = {
       weight: {
         type: Sequelize.INTEGER,
       },
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+        allowNull: false,
+      },
       // creatorId: {
       //   type: Sequelize.INTEGER,
       //   references: {
