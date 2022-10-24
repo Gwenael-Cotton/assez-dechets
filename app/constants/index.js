@@ -1,6 +1,7 @@
 const INVALID_EMAIL_OR_PASSWORD = 'Invalid email or password';
 const WRONG_TOKEN = 'Bad token';
 const MISSING_EMAIL_PASSWORD = 'Missing email or password in parameters';
+const LOGIN_MANDATORY = 'You must be logged in';
 
 const GENERIC_ERROR = 'An error has occurred';
 
@@ -19,6 +20,7 @@ module.exports = {
   INVALID_EMAIL_OR_PASSWORD,
   WRONG_TOKEN,
   MISSING_EMAIL_PASSWORD,
+  LOGIN_MANDATORY,
   GENERIC_ERROR,
   EVENT_NOT_FOUND,
   START_DATE_MUST_BE_AFTER_TODAY,
