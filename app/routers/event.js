@@ -12,6 +12,4 @@ router.post('/events', checkUserIsLogged, validate(eventSchema), eventController
 router.put('/events/:id', checkUserIsLogged, eventController.updateEvent);
 router.delete('/events/:id', checkUserIsLogged, eventController.deleteEvent);
 
-router.post('/:eventId/:userId', eventController.linkUserToEvent);
-
 module.exports = router;

@@ -9,7 +9,8 @@ const eventSchema = yup.object({
     description: yup.string().required(),
     status: yup.string().required(),
     weight: yup.number().required().positive().integer(),
-    userId: yup.number().required().positive().integer(),
+    creatorId: yup.number().required().positive().integer(),
+    participantIds: yup.array().of(yup.number().positive().integer()),
   }),
 
 });

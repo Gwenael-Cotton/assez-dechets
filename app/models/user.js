@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasMany(models.Event, {
-      foreignKey: 'userId',
+      foreignKey: 'participantIds',
     });
   };
 

@@ -7,12 +7,13 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     status: DataTypes.ENUM('ONGOING', 'UPCOMING', 'DONE'),
     weight: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER,
+    creatorId: DataTypes.INTEGER,
+    participantIds: DataTypes.ARRAY(DataTypes.INTEGER),
   }, {});
   Event.associate = (models) => {
     Event.belongsTo(models.User, {
       as: 'user',
-      foreignKey: 'userId',
+      foreignKey: 'id',
       onDelete: 'CASCADE',
     });
   };

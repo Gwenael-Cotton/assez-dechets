@@ -9,7 +9,7 @@ GET http://localhost:3000/api/events/2
 
 POST http://localhost:3000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY2NTk5NDkxLCJleHAiOjE2NjY2MDMwOTF9.wJSKIDk9ROrsH29gU5mbeZ_rkOJdnf8YQ2f4YqI7QYw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY2NjA1MTM2LCJleHAiOjE2NjY2MDg3MzZ9.kIDAKDHhdj7tCxRnePcfIUYNFo1zcbfsA6riJOJjU44
 
 {
     "title": "Super collecte",
@@ -19,17 +19,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxN
     "description": "C'est la fête des canards",
     "status": "UPCOMING",
     "weight": 10,
-    "userId": 2
+    "creatorId": 1
 }
 
 ###
 
-PUT http://localhost:3000/api/events/3
+PUT http://localhost:3000/api/events/1
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY2NTk5NDkxLCJleHAiOjE2NjY2MDMwOTF9.wJSKIDk9ROrsH29gU5mbeZ_rkOJdnf8YQ2f4YqI7QYw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY2NjA1MTM2LCJleHAiOjE2NjY2MDg3MzZ9.kIDAKDHhdj7tCxRnePcfIUYNFo1zcbfsA6riJOJjU44
 
 {
-    "place": "Turlututu"
+    "participantIds": [2, 3]
 }
 
 ###
@@ -46,7 +46,7 @@ Content-Type: application/json
 {
   "firstName": "test",
   "lastName": "test",
-  "email": "ajhfjghjfg@test.com",
+  "email": "fgfhfgf@test.com",
   "password": "P@ff!ssw0rd"
 }
 
@@ -60,4 +60,4 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/2/2
+# POST http://localhost:3000/api/2/2
