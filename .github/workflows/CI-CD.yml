@@ -51,3 +51,5 @@ jobs:
       # Runs tests
       - name: test ci
         run: cd app && npm i jest supertest && npm run test
+        env: 
+          DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
