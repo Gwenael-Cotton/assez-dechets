@@ -63,9 +63,8 @@ const authController = {
         });
       }
 
-      const { access_token, refresh_token } = await generateUserToken(user);
+      const { access_token } = await generateUserToken(user);
 
-      res.cookie('refresh_token', refresh_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
       res.json({ user, access_token });
     } catch (e) {
       res.status(500).json({
@@ -80,9 +79,10 @@ const authController = {
     try {
       const decodedData = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
       const user = await models.User.findByPk(decodedData.id);
-      const tokens = generateUserToken(user);
+      const { refresh_token } = generateUserToken(user);
 
-      res.json(tokens);
+      res.cookie('refresh_token', refresh_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+      res.json({ user });
     } catch (e) {
       res.status(401).json({
         error: WRONG_TOKEN,
