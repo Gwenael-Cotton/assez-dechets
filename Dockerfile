@@ -15,7 +15,5 @@ RUN npm install
 # Copy local code to the container image.
 COPY . .
 
-RUN docker compose up
-
 # Run the web service on container startup.
 CMD [ "app/index.js" ]
