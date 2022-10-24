@@ -18,7 +18,20 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lates
+    
+      services:
+        postgres:
+          image: postgres:13-alpine
+          restart: "no"
+          ports:
+            - "5432:5432"
+          volumes:
+            - assez-dechets-postgres:/var/lib/postgresql/data
+          environment:
+            POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
