@@ -70,8 +70,29 @@ const eventController = {
       const [updated] = await models.Event.update(req.body, {
         where: { id },
       });
+
       if (updated) {
         const updatedEvent = await models.Event.findByPk(id);
+
+        if (updatedEvent.dataValues.participantIds !== null) {
+          const { participantIds } = updatedEvent.dataValues;
+
+          const allUsersIds = await models.User.findAll({
+            attributes: ['id'],
+          });
+          const userIds = allUsersIds.map((user) => user.dataValues.id);
+
+          if (!participantIds.every((participantId) => userIds.includes(participantId))) {
+            throw new Error(USER_NOT_FOUND);
+          }
+
+          await Promise.all(participantIds.map((participantId) => {
+            const updatedUsers = models.User.increment({ numberParticipations: 1 }, {
+              where: { id: participantId },
+            });
+            return updatedUsers;
+          }));
+        }
         return res.status(200).json(updatedEvent);
       }
       throw new Error(EVENT_NOT_FOUND);
