@@ -1,15 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const setDecodedToken = async(req, _, next) => {
-  // CHECK HEADER CONNARD
+const setDecodedToken = async (req, _, next) => {
   try {
-    console.log(req.headers);
-    const { cookie } = await req.headers;
-    console.log("COOKIE HEADER : ",cookie.split(' '));
-    const token = cookie.split(' ');
-    console.log("TOKEN SPLIT : ",token[0]);
+    const header = req.headers.authorization.split(' ');
+    const token = header[1];
+    console.log(token);
     if (token) {
-      const tokenDecoded = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET_KEY);
+      const tokenDecoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
       req.user = tokenDecoded;
     }
   } catch (e) {
@@ -19,7 +16,7 @@ const setDecodedToken = async(req, _, next) => {
   next();
 };
 
-const checkUserIsLogged = (req, res, next) => {
+const checkUserIsLogged = async (req, res, next) => {
   if (req.user) {
     next();
   } else {

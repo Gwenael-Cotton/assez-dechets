@@ -2,7 +2,6 @@ const models = require('../models/database');
 
 const userController = {
   getAllUsers: async (_, res) => {
-    console.log("OCOCOCO")
     try {
       const users = await models.User.findAll();
       return res.json(users);
