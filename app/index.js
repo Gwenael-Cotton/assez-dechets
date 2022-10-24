@@ -16,12 +16,12 @@ app.use(
 );
 app.use(express.json());
 
-app.use(setDecodedToken);
 
 app.use(cookieParser());
 
-app.use('/api', eventRouter);
 app.use('/api', authRouter);
+app.use(setDecodedToken);
+app.use('/api', eventRouter);
 app.use('/api', userRouter);
 app.use('*', errorRouter);
 

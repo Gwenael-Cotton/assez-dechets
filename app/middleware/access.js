@@ -4,7 +4,6 @@ const setDecodedToken = async (req, _, next) => {
   try {
     const header = req.headers.authorization.split(' ');
     const token = header[1];
-    console.log(token);
     if (token) {
       const tokenDecoded = jwt.verify(token, process.env.TOKEN_SECRET_KEY);
       req.user = tokenDecoded;
