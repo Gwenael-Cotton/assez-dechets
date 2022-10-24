@@ -26,7 +26,7 @@ jobs:
           - "5432:5432"
         env:
           POSTGRES_DB: assez-dechets-project
-          POSTGRES_USER: assez-dechets
+          # POSTGRES_USER: assez-dechets
           POSTGRES_PASSWORD: superSecretPassword
         options:
           --health-cmd pg_isready
