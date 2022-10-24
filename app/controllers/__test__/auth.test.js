@@ -1,17 +1,16 @@
 const request = require('supertest');
+const { sequelize } = require('../../models/database');
 const app = require('../../index');
 // const agent = require('supertest').agent(app);
 // const { sequelize, User } = require('../../models/user');
-const { sequelize } = require('../../models/database');
-// const { register } = require('../authController');
 
 describe('Should be register', () => {
-  beforeAll(async () => {
-    await sequelize.sync({ force: true });
+  beforeAll(() => {
+    sequelize.sync({ force: true });
   });
 
-  afterAll(async () => {
-    await sequelize.close();
+  afterAll(() => {
+    sequelize.close();
   });
 
   const mockUser = expect.objectContaining({
@@ -27,9 +26,9 @@ describe('Should be register', () => {
 
   test('POST /api/register success', async () => {
     const user = {
-      firstName: 'test2',
+      firstName: 'tests',
       lastName: 'testname',
-      email: 'test3@gmail.com',
+      email: 'test999@gmail.com',
       password: 'Superpass41*',
       numberParticipations: 0,
     };
