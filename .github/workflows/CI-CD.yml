@@ -19,19 +19,18 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
-    services:
-      postgres:
-        image: postgres:13-alpine
-        ports:
-          - "5432:5432"
-        volumes:
-          - assez-dechets-postgres:/var/lib/postgresql/data
-        env:
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-
+        services:
+          postgres:
+            image: postgres:13-alpine
+            restart: "no"
+            ports:
+              - "5432:5432"
+            volumes:
+              - assez-dechets-postgres:/var/lib/postgresql/data
+            environment:
+              POSTGRES_DB: assez-dechets-project
+              POSTGRES_USER: assez-dechets
+              POSTGRES_PASSWORD: superSecretPassword
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
