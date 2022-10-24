@@ -1,5 +1,6 @@
 ###
 GET http://localhost:3000/api/events
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjY2NjAyMDU0LCJleHAiOjE2NjY2MDU2NTR9.574a9iNF0Q2epWqEOpSgBp9qsqllMPIpUqaAK7ooX_8
 
 ###
 GET http://localhost:3000/api/events/2
@@ -13,19 +14,19 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxN
 {
     "title": "Super collecte",
     "place": "Trifouilly-les-Canards",
-    "startDate": "2022-10-12",
+    "startDate": "2022-10-25",
     "endDate": "2022-11-02",
     "description": "C'est la fête des canards",
     "status": "UPCOMING",
     "weight": 10,
-    "creatorId": 2
-
+    "userId": 2
 }
 
 ###
 
-PUT http://localhost:3000/api/events/1
+PUT http://localhost:3000/api/events/3
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY2NTk5NDkxLCJleHAiOjE2NjY2MDMwOTF9.wJSKIDk9ROrsH29gU5mbeZ_rkOJdnf8YQ2f4YqI7QYw
 
 {
     "place": "Turlututu"
@@ -33,7 +34,9 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/events/8
+DELETE http://localhost:3000/api/events/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY2NTk5NDkxLCJleHAiOjE2NjY2MDMwOTF9.wJSKIDk9ROrsH29gU5mbeZ_rkOJdnf8YQ2f4YqI7QYw
+
 
 ###
 
@@ -43,7 +46,7 @@ Content-Type: application/json
 {
   "firstName": "test",
   "lastName": "test",
-  "email": "fddgfg@test.com",
+  "email": "ajhfjghjfg@test.com",
   "password": "P@ff!ssw0rd"
 }
 
@@ -52,9 +55,9 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-  "email": "fddgfg@test.com",
+  "email": "ajhfjghjfg@test.com",
   "password": "P@ff!ssw0rd"
 }
 
 ###
-POST http://localhost:3000/api/:eventId/:userId
+POST http://localhost:3000/api/2/2

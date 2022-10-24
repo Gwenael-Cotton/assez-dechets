@@ -55,7 +55,7 @@ const eventController = {
         description: req.body.description,
         status: req.body.status,
         weight: req.body.weight,
-        creatorId: req.body.creatorId,
+        userId: req.body.userId,
       });
 
       return res.status(201).json(eventToCreate);
@@ -99,12 +99,10 @@ const eventController = {
     try {
       const { eventId, userId } = req.params;
       const event = await models.Event.findByPk(eventId);
-      console.log({ event });
-      const user = await models.User.findByPk(userId);
-      console.log({ user });
       if (!event) {
         return res.status(404).send({ error: EVENT_NOT_FOUND });
       }
+      const user = await models.User.findByPk(userId);
       if (!user) {
         return res.status(404).send({ error: USER_NOT_FOUND });
       }
