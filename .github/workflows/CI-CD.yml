@@ -50,9 +50,6 @@ jobs:
 
       # Runs tests
       - name: test ci
-        run: cd app
-        run: echonpm i jest supertest
-        run: npx sequelize-cli db:migrate
-        run: npm run test
+        run: cd app && npm i jest supertest && npx sequelize-cli db:migrate && npm run test
         env: 
           DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
