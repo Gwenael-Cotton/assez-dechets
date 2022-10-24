@@ -9,6 +9,8 @@ const START_DATE_MUST_BE_AFTER_TODAY = 'You must create an event in the future';
 const END_DATE_MUST_BE_AFTER_START_DATE = 'End date must be after start date';
 const EVENT_DELETED = 'Event deleted';
 
+const USER_NOT_FOUND = 'User not found';
+
 const CONTENT_NOT_FOUND = 'Content not found';
 const PASSWORD_REQUIREMENTS = 'Password must contain 8 characters, one uppercase, one lowercase, one number and one special case character';
 const REQUIRED_PASSWORD = 'Please enter your password';
@@ -22,6 +24,7 @@ module.exports = {
   START_DATE_MUST_BE_AFTER_TODAY,
   END_DATE_MUST_BE_AFTER_START_DATE,
   EVENT_DELETED,
+  USER_NOT_FOUND,
   CONTENT_NOT_FOUND,
   PASSWORD_REQUIREMENTS,
   REQUIRED_PASSWORD,

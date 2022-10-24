@@ -16,4 +16,6 @@ router.post('/events', validate(eventSchema), eventController.createEvent);
 router.put('/events/:id', eventController.updateEvent);
 router.delete('/events/:id', eventController.deleteEvent);
 
+router.post('/:eventId/:userId', eventController.linkUserToEvent);
+
 module.exports = router;

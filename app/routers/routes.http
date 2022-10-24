@@ -8,7 +8,7 @@ GET http://localhost:3000/api/events/2
 
 POST http://localhost:3000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjU0OTQ3MTAsImV4cCI6MTY2NTQ5ODMxMCwiYXVkIjoiMSIsImlzcyI6ImFzc2V6LWRlY2hldHMifQ.U7QB4-phv-o2D4yDxqmfmESXSs3QP5h8zTZy0IJGcIA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY2NTk5NDkxLCJleHAiOjE2NjY2MDMwOTF9.wJSKIDk9ROrsH29gU5mbeZ_rkOJdnf8YQ2f4YqI7QYw
 
 {
     "title": "Super collecte",
@@ -18,7 +18,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NjU0OTQ3M
     "description": "C'est la fête des canards",
     "status": "UPCOMING",
     "weight": 10,
-    "creatorId": 1
+    "creatorId": 2
 
 }
 
@@ -52,6 +52,9 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-  "email": "fxxdfgff@test.com",
-  "password": "P@ssw0rd!"
+  "email": "fddgfg@test.com",
+  "password": "P@ff!ssw0rd"
 }
+
+###
+POST http://localhost:3000/api/:eventId/:userId
