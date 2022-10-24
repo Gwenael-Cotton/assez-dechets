@@ -86,6 +86,8 @@ const eventController = {
             throw new Error(USER_NOT_FOUND);
           }
 
+          // todo: check if user is already in the event
+          // todo: if user is already in the event, don't increment
           await Promise.all(participantIds.map((participantId) => {
             const updatedUsers = models.User.increment({ numberParticipations: 1 }, {
               where: { id: participantId },
