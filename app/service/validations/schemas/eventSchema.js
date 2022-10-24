@@ -1,16 +1,17 @@
-const {
-  object, string, number, date,
-} = require('yup');
+const yup = require('yup');
 
-const eventSchema = object({
-  title: string().required(),
-  place: string().required(),
-  startDate: date().required(),
-  endDate: date().required(),
-  description: string().required(),
-  status: string().required(),
-  weight: number().required().positive().integer(),
-  creatorId: number().required().positive().integer(),
+const eventSchema = yup.object({
+  body: yup.object({
+    title: yup.string().required(),
+    place: yup.string().required(),
+    startDate: yup.date().required(),
+    endDate: yup.date().required(),
+    description: yup.string().required(),
+    status: yup.string().required(),
+    weight: yup.number().required().positive().integer(),
+    creatorId: yup.number().required().positive().integer(),
+    participantIds: yup.array().of(yup.number().positive().integer()),
+  }),
 
 });
 

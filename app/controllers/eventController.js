@@ -3,6 +3,7 @@ const {
   START_DATE_MUST_BE_AFTER_TODAY,
   END_DATE_MUST_BE_AFTER_START_DATE,
   EVENT_DELETED,
+  USER_NOT_FOUND,
 } = require('../constants');
 
 const models = require('../models/database');

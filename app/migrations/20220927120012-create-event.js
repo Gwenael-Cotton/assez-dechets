@@ -29,7 +29,12 @@ module.exports = {
       weight: {
         type: Sequelize.INTEGER,
       },
-      userId: {
+      participantIds: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        onDelete: 'cascade',
+        onUpdate: 'cascade',
+      },
+      creatorId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
@@ -39,13 +44,6 @@ module.exports = {
         onUpdate: 'cascade',
         allowNull: false,
       },
-      // creatorId: {
-      //   type: Sequelize.INTEGER,
-      //   references: {
-      //     model: 'Users',
-      //     key: 'id',
-      //   },
-      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
