@@ -8,7 +8,7 @@ const eventSchema = yup.object({
     endDate: yup.date().required(),
     description: yup.string().required(),
     status: yup.string().required(),
-    weight: yup.number().required().positive().integer(),
+    weight: yup.number().required(),
     creatorId: yup.number().required().positive().integer(),
     participantIds: yup.array().of(yup.number().positive().integer()),
   }),
