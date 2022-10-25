@@ -10,7 +10,7 @@ const setDecodedToken = async (req, res, next) => {
       req.user = tokenDecoded;
     }
   } catch (e) {
-    res.json({ error: WRONG_TOKEN });
+    return res.status(401).json({ error: WRONG_TOKEN });
   }
 
   next();
@@ -20,7 +20,7 @@ const checkUserIsLogged = async (req, res, next) => {
   if (req.user) {
     next();
   } else {
-    res.status(401).json({
+    return res.status(401).json({
       error: LOGIN_MANDATORY,
     });
   }
