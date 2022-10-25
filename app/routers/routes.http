@@ -9,7 +9,7 @@ GET http://localhost:3000/api/events/2
 
 POST http://localhost:3000/api/events
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY2NjA1MTM2LCJleHAiOjE2NjY2MDg3MzZ9.kIDAKDHhdj7tCxRnePcfIUYNFo1zcbfsA6riJOJjU44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjY2NjEyOTA2LCJleHAiOjE2NjY2MTY1MDZ9.Hcl6FBRWwaU6-qQC-QVuueNpixL5NNaT4LzsvU_aWZE
 
 {
     "title": "Super collecte",
@@ -24,12 +24,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxN
 
 ###
 
-PUT http://localhost:3000/api/events/1
+PUT http://localhost:3000/api/events/6
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjY2NjA1MTM2LCJleHAiOjE2NjY2MDg3MzZ9.kIDAKDHhdj7tCxRnePcfIUYNFo1zcbfsA6riJOJjU44
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjY2NjEyOTA2LCJleHAiOjE2NjY2MTY1MDZ9.Hcl6FBRWwaU6-qQC-QVuueNpixL5NNaT4LzsvU_aWZE
 
 {
-    "participantIds": [2, 3]
+    "participantIds": [2, 3, 80]
 }
 
 ###
@@ -55,7 +55,7 @@ POST http://localhost:3000/api/login
 Content-Type: application/json
 
 {
-  "email": "ajhfjghjfg@test.com",
+  "email": "fgfhfgf@test.com",
   "password": "P@ff!ssw0rd"
 }
 
