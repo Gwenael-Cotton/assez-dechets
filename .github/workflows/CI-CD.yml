@@ -31,6 +31,11 @@ jobs:
               POSTGRES_DB: assez-dechets-project
               POSTGRES_USER: assez-dechets
               POSTGRES_PASSWORD: superSecretPassword
+            options:
+              --health-cmd pg_isready
+              --health-interval 10s
+              --health-timeout 5s
+              --health-retries 5
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -49,3 +54,5 @@ jobs:
       # Runs tests
       - name: test ci
         run: cd app && npm i jest supertest && npm run test
+        env: 
+          DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
