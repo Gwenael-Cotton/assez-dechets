@@ -59,10 +59,12 @@ const authController = {
         });
       }
 
+      const userWithoutPassword = omit(['password'], user.dataValues);
+
       const { access_token, refresh_token } = await generateUserToken(user);
       res.cookie('refresh_token', refresh_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
       // res.json({ user, access_token });
-      res.status(200).json({ user, access_token });
+      res.status(200).json({ userWithoutPassword, access_token });
     } catch (e) {
       res.status(500).json({
         message: GENERIC_ERROR,
