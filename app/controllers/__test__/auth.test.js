@@ -1,7 +1,7 @@
 const request = require('supertest');
-const { sequelize } = require('../../models/database');
 const app = require('../../index');
-// const agent = require('supertest').agent(app);
+const { sequelize } = require('../../models/database');
+const { generateUserToken } = require('../../service/auth/generateJwt');
 // const { sequelize, User } = require('../../models/user');
 
 describe('Should be register', () => {
@@ -13,46 +13,33 @@ describe('Should be register', () => {
     sequelize.close();
   });
 
-  const mockUser = expect.objectContaining({
-    firstName: expect.any(String),
-    lastName: expect.any(String),
-    email: expect.any(String),
-    // password: expect.any(String),
-    numberParticipations: expect.any(Number),
-    id: expect.any(Number),
-    createdAt: expect.any(String),
-    updatedAt: expect.any(String),
-  });
-
-  test('POST /api/register success', async () => {
+  test('POST /api/register success', () => {
+    const agent = request.agent(app);
     const user = {
       firstName: 'tests',
       lastName: 'testname',
       email: 'test999@gmail.com',
       password: 'Superpass41*',
-      numberParticipations: 0,
     };
 
-    const res = await request(app).post('/api/register').send(user);
-
-    expect(res.statusCode).toBe(201);
-    expect(res.body).toEqual(mockUser);
-    // expect(res.body).toMatchObject(user);
+    agent
+      .post('/api/register')
+      .send(user)
+      .expect(201);
   });
 
-  test('POST /api/register error', async () => {
-    const user = {
-      firstName: 'test2',
-      lastName: 'testname',
-      email: 'testfgfh3@gmail.com',
-      // password: 'Superpass41*',
-      // numberParticipations: 0,
-    };
+  // test('POST /api/login success', async () => {
+  //   const agent = request.agent(app);
+  //   const user = {
+  //     email: 'test84@gmail.com',
+  //     password: 'Superpass41*',
+  //   };
 
-    const res = await request(app).post('/api/register').send(user);
+  //   const { access_token, refresh_token } = await generateUserToken(user);
 
-    expect(res.statusCode).toBe(500);
-    // expect(res.body).toEqual(mockUser);
-    // expect(res.body).toMatchObject(user);
-  });
+  //   await agent
+  //     .post('/api/login')
+  //     .send({user, access_token})
+  //     .expect(200);
+  // });
 });
