@@ -1,3 +1,4 @@
+const { omit } = require('ramda');
 const { USER_NOT_FOUND } = require('../constants');
 const models = require('../models/database');
 
@@ -10,13 +11,14 @@ const userController = {
       return res.status(500).send({ error: err.message });
     }
   },
-  
+
   getOneUser: async (req, res) => {
     try {
-      const user = await models.User.findByPk(req.user.id);
+      let user = await models.User.findByPk(req.user.id);
       if (!user) {
         return res.status(404).send({ error: USER_NOT_FOUND });
       }
+      user = omit(['password'], user.dataValues);
       return res.json(user);
     } catch (err) {
       return res.status(500).send({ error: err.message });
