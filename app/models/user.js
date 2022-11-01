@@ -17,11 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
 
-  User.associate = (models) => {
-    User.hasMany(models.Event, {
-      foreignKey: 'participantIds',
-    });
-  };
+  // TODO : Fix this association ( bug on reset db )
+  // User.associate = (models) => {
+  //   User.hasMany(models.Event, {
+  //     foreignKey: 'participantIds',
+  //   });
+  // };
 
   return User;
 };
