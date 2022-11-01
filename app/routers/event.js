@@ -7,9 +7,9 @@ const { setDecodedToken } = require('../middleware/access');
 const router = new express.Router();
 
 router.get('/events', eventController.getAllEvents);
-router.get('/events/:id', setDecodedToken, eventController.getOneEvent);
+router.get('/events/:id', eventController.getOneEvent);
 router.post('/events', setDecodedToken, validate(eventSchema), eventController.createEvent);
-router.put('/events/:id', setDecodedToken, eventController.updateEvent);
-router.delete('/events/:id', setDecodedToken, eventController.deleteEvent);
+router.put('/events/:id', eventController.updateEvent);
+router.delete('/events/:id', eventController.deleteEvent);
 
 module.exports = router;
