@@ -5,8 +5,10 @@ const models = require('../models/database');
 const userController = {
   getAllUsers: async (_, res) => {
     try {
-      const users = await models.User.findAll();
-      return res.json(users);
+      const user = await models.User.findAll();
+      console.log(user.dataValues);
+      omit(['password'], user.dataValues);
+      return res.json(user);
     } catch (err) {
       return res.status(500).send({ error: err.message });
     }
@@ -22,6 +24,20 @@ const userController = {
       return res.json(user);
     } catch (err) {
       return res.status(500).send({ error: err.message });
+    }
+  },
+
+  updateNumberOfParticip: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const user = await models.User.update(
+        { numberParticipations: req.body.numberParticipations },
+        { where: { id } },
+      );
+
+      return res.status(200).json(user);
+    } catch (err) {
+      console.log(err);
     }
   },
 };
