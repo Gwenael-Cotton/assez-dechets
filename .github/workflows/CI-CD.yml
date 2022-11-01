@@ -20,17 +20,19 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
         services:
-          postgres:
-            image: postgres:13-alpine
-            restart: "no"
-            ports:
-              - "5432:5432"
-            volumes:
-              - assez-dechets-postgres:/var/lib/postgresql/data
-            environment:
-              POSTGRES_DB: assez-dechets-project
-              POSTGRES_USER: assez-dechets
-              POSTGRES_PASSWORD: superSecretPassword
+      postgres:
+        image: postgres:13-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: testPassword
+        options:
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -49,3 +51,6 @@ jobs:
       # Runs tests
       - name: test ci
         run: cd app && npm i jest supertest && npm run test
+        # env:
+        #   NODE_ENV: test
+        #   DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
