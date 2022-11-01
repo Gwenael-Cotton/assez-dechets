@@ -53,4 +53,4 @@ jobs:
         run: cd app && npm i jest supertest && npm run test
         env:
           NODE_ENV: test
-          # DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
+          DATABASE_URL: postgresql://test:testPassword@localhost:5432/test
