@@ -11,7 +11,7 @@ module.exports = {
   test: {
     username: 'assez-dechets',
     password: 'testPassword',
-    database: 'assez-dechets-project-test',
+    database: 'assez-dechets-project',
     host: 'localhost',
     dialect: 'postgres',
   },
