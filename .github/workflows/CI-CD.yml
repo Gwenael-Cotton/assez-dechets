@@ -53,6 +53,8 @@ jobs:
           cd app &&
           npm install &&
           npm run start
+          sleep 5 &&
+          curl http://localhost:port -I
 
       # Runs tests
       - name: test ci
