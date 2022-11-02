@@ -5,9 +5,9 @@ const validate = (schema) => async (req, res, next) => {
       query: req.query,
       params: req.params,
     });
-    return next();
+    next();
   } catch (err) {
-    return res.status(500).json({ type: err.name, message: err.message });
+    res.status(400).json({ type: err.name, message: err.message });
   }
 };
 module.exports = validate;

@@ -49,7 +49,7 @@ describe('Should be register', () => {
     const res = await request(app)
       .post('/api/register')
       .send(user)
-      .expect(500);
+      .expect(400);
 
     const error = JSON.parse(res.error.text);
 
@@ -69,7 +69,7 @@ describe('Should be register', () => {
     const res = await request(app)
       .post('/api/register')
       .send(user)
-      .expect(500);
+      .expect(400);
 
     const error = JSON.parse(res.error.text);
 
@@ -99,8 +99,6 @@ describe('Should be login', () => {
       email: registerResponse.email,
       password: user.password,
     };
-
-    console.log(userLog);
 
     await request(app)
       .post('/api/login')
