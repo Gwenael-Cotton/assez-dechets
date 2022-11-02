@@ -24,7 +24,7 @@ const authController = {
       res.json(userWithoutPassword);
     } catch (e) {
       // console.error(e);
-      res.status(500).send(e);
+      res.status(400).send(e);
     }
   },
 
@@ -46,7 +46,7 @@ const authController = {
       });
 
       if (!user) {
-        res.status(401).json({
+        return res.status(401).json({
           error: INVALID_EMAIL_OR_PASSWORD,
         });
       }
@@ -54,7 +54,7 @@ const authController = {
       // verify if password in the body are same in database
       const isValidPassword = await bcrypt.compare(password, user.password);
       if (!isValidPassword) {
-        res.status(401).json({
+        return res.status(401).json({
           error: INVALID_EMAIL_OR_PASSWORD,
         });
       }
@@ -64,9 +64,9 @@ const authController = {
       const { access_token, refresh_token } = await generateUserToken(user);
       res.cookie('refresh_token', refresh_token, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
       // res.json({ user, access_token });
-      res.status(200).json({ userWithoutPassword, access_token });
+      return res.status(200).json({ userWithoutPassword, access_token });
     } catch (e) {
-      res.status(500).json({
+      res.status(400).json({
         message: GENERIC_ERROR,
       });
     }
