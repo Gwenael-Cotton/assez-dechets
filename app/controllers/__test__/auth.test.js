@@ -21,7 +21,7 @@ describe('Should be register', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test@gmail.com',
+      email: 'test1@gmail.com',
       password: 'Superpass41*',
       // numberParticipations: 0,
     };
@@ -35,7 +35,7 @@ describe('Should be register', () => {
       id: 1,
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test@gmail.com',
+      email: 'test1@gmail.com',
     });
   });
 
@@ -63,7 +63,7 @@ describe('Should be register', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test@test.com',
+      email: 'test2@test.com',
       password: 'superpass',
     };
     const res = await request(app)
@@ -85,7 +85,7 @@ describe('Should be login', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test2@gmail.com',
+      email: 'test3@gmail.com',
       password: 'Superpass41*',
     };
     const register = await request(app)
@@ -113,7 +113,7 @@ describe('Should be login', () => {
       password: 'Superpass41*',
     };
     const userLogWithoutPassword = {
-      email: 'test3@gmail.com',
+      email: 'test4@gmail.com',
     };
 
     const resWithoutEmail = await request(app)
@@ -161,7 +161,7 @@ describe('Should be login', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test4@gmail.com',
+      email: 'test5@gmail.com',
       password: 'Superpass41*',
     };
     // THEN
@@ -191,7 +191,7 @@ describe('Should be login', () => {
     const user = {
       firstName: 'test2',
       lastName: 'testname',
-      email: 'test3@gmail.com',
+      email: 'test6@gmail.com',
       password: 'Superpass41*',
     };
     // THEN
@@ -224,19 +224,19 @@ describe('Should be login', () => {
       id: 5,
       firstName: 'tests',
       lastName: 'testname',
-      email: 'testt@gmail.com',
+      email: 'test7@gmail.com',
       password: hashPassword,
       updatedAt: '2022-11-01T00:58:53.148Z',
       createdAt: '2022-11-01T00:58:53.148Z',
     };
 
     const bodyWithGoodPassword = {
-      email: 'testt@gmail.com',
+      email: 'test7@gmail.com',
       password: 'Superpass41*',
     };
 
     const bodyWithBadPassword = {
-      email: 'testt@gmail.com',
+      email: 'test7@gmail.com',
       password: 'upeRpass41*',
     };
 
