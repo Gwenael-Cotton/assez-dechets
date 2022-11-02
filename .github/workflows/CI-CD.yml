@@ -48,12 +48,12 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      - name: "Start server"
-        run: |
-          cd app &&
-          npm install &&
-          npm run start &
-          sleep 5
+      # - name: "Start server"
+      #   run: |
+      #     cd app &&
+      #     npm install &&
+      #     npm run start &
+      #     sleep 5
 
       # Runs tests
       - name: test ci

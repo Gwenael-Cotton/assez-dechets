@@ -100,6 +100,8 @@ describe('Should be login', () => {
       password: user.password,
     };
 
+    console.log(userLog);
+
     await request(app)
       .post('/api/login')
       .send(userLog)
