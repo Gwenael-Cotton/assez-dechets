@@ -47,14 +47,10 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
-      # Runs install tests dependencies
-      - name: install test dependencies
-        run: cd app && npm i jest supertest
 
       # Runs tests
       - name: test ci
-        run: npm run test
+        run: cd app && npm i jest supertest && npm run test
         env:
           NODE_ENV: test
           DATABASE_URL: postgresql://test:testPassword@localhost:5432/test
