@@ -27,7 +27,7 @@ jobs:
         env:
           POSTGRES_DB: assez-dechets-project
           POSTGRES_USER: assez-dechets
-          POSTGRES_PASSWORD: superSecretPassword
+          POSTGRES_PASSWORD: testPassword
         options:
           --health-cmd pg_isready
           --health-interval 10s
