@@ -25,9 +25,9 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          POSTGRES_DB: test
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: testPassword
+          POSTGRES_DB: assez-dechets-project
+          POSTGRES_USER: assez-dechets
+          POSTGRES_PASSWORD: superSecretPassword
         options:
           --health-cmd pg_isready
           --health-interval 10s
@@ -53,4 +53,4 @@ jobs:
         run: cd app && npm i jest supertest && npm run test
         env:
           NODE_ENV: test
-          DATABASE_URL: postgresql://test:testPassword@localhost:5432/test
+          DATABASE_URL: postgresql://assez-dechets:superSecretPassword@localhost:5432/assez-dechets-project
