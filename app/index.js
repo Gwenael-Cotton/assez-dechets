@@ -5,7 +5,7 @@ const eventRouter = require('./routers/event');
 const authRouter = require('./routers/auth');
 const userRouter = require('./routers/user');
 const errorRouter = require('./routers/error');
-// const db = require('./models/database');
+const db = require('./models/database');
 
 const app = express();
 
@@ -27,12 +27,10 @@ app.use('*', errorRouter);
 
 const PORT = process.env.PORT || 3000;
 
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log('Drop and re-sync db.');
-// });
+db.sequelize.sync({ force: true }).then(() => {
+  console.log('Drop and re-sync db.');
+});
 
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => console.log(`Server is live at localhost:${PORT}`));
-}
+app.listen(PORT, () => console.log(`Server is live at localhost:${PORT}`));
 
 module.exports = app;
