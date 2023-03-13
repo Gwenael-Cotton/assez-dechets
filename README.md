@@ -1,19 +1,25 @@
-# projet-06-ramassage-de-dechets-back
+# projet ramassage de dechets partie  (back-end)
 
 ## RUN DATABASE
 
-- install Docker
-- if your port 5432 are not free :
-  - docker ps
-  - docker stop <CONTAINER_ID>
+install Docker
 
 ```zsh
 docker compose up
 ```
+### Troubleshoot
+
+If your port 5432 are not free :
+  - docker ps
+  - docker stop <CONTAINER_ID>
+
+Else if you have PostgresQL desktop, close him before run docker compose
 
 ## RUN SERVER
 
-- cd app
+```sh
+cd app
+```
 
 by default your database are empty when you run your server 
 
